@@ -4,7 +4,7 @@ defmodule Cpf do
   """
 
   @doc """
-  Keep only number from string
+  Keep only numbers from string
 
   ## Examples
 
@@ -26,11 +26,15 @@ defmodule Cpf do
 
   """
   def valid?(cpf) do
-    digits_verifier?(cpf)
+    list = to_list(cpf)
+    valid_size?(list) and valid_digits_verifier?(list)
   end
 
-  defp digits_verifier?(cpf) do
-    list = cpf |> to_list()
+  defp valid_size?(list) do
+    Enum.count(list) == 11
+  end
+
+  defp valid_digits_verifier?(list) do
     cpf_digits = list |> Enum.take(-2)
     without_verifier = list |> Enum.take(9)
     first_verifier = without_verifier |> gen_verifier()

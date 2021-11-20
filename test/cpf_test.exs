@@ -12,4 +12,9 @@ defmodule CpfTest do
     refute Cpf.valid?("415.276.500-00")
     refute Cpf.valid?("41527650000")
   end
+
+  test "invalid when lengh is not 11" do
+    refute Cpf.valid?("6889448006262")
+    refute Cpf.valid?("688944800")
+  end
 end
