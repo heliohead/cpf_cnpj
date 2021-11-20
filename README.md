@@ -1,6 +1,8 @@
-# CpfCnpj
+# CPF / CNPJ
 
-**TODO: Add description**
+This lib does some
+[CPF](http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas)/[CNPJ](http://en.wikipedia.org/wiki/CNPJ)
+facilities. It allows you to create, validate, format and generate fake CPF/CNPJ.
 
 ## Installation
 
@@ -18,4 +20,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/cpf_cnpj>.
-
