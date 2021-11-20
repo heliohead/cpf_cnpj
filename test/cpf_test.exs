@@ -17,4 +17,14 @@ defmodule CpfTest do
     refute Cpf.valid?("6889448006262")
     refute Cpf.valid?("688944800")
   end
+
+  test "invalid if all equals" do
+    refute Cpf.valid?("111.111.111-11")
+    refute Cpf.valid?("44444444444")
+  end
+
+  test "invalid if on not_permited list" do
+    refute Cpf.valid?("98765432100")
+    refute Cpf.valid?("12345678909")
+  end
 end

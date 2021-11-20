@@ -2,6 +2,7 @@ defmodule Cpf do
   @moduledoc """
   This module validate, format and generate fake CPF
   """
+  @not_permited ["12345678909", "01234567890", "98765432100"]
 
   @doc """
   Keep only numbers from string
@@ -23,11 +24,25 @@ defmodule Cpf do
 
       iex> Cpf.valid?("073.055.920-30")
       true
+      iex> Cpf.valid?("11111111111")
+      false
 
   """
   def valid?(cpf) do
     list = to_list(cpf)
-    valid_size?(list) and valid_digits_verifier?(list)
+
+    not_on_not_permited?(list) and
+      uniq?(list) and
+      valid_size?(list) and
+      valid_digits_verifier?(list)
+  end
+
+  defp not_on_not_permited?(list) do
+    !Enum.member?(@not_permited, Enum.join(list))
+  end
+
+  defp uniq?(list) do
+    list |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
   end
 
   defp valid_size?(list) do
