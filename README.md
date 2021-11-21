@@ -1,3 +1,6 @@
+## WIP
+This lib is working in progress
+
 # CPF / CNPJ
 ![Build Status](https://github.com/heliohead/cpf_cnpj/actions/workflows/elixir.yml/badge.svg)
 
