@@ -32,7 +32,7 @@ defmodule Cpf do
     list = to_list(cpf)
 
     not_on_not_permited?(list) and
-      uniq?(list) and
+      not_uniq?(list) and
       valid_size?(list) and
       valid_digits_verifier?(list)
   end
@@ -41,7 +41,7 @@ defmodule Cpf do
     !Enum.member?(@not_permited, Enum.join(list))
   end
 
-  defp uniq?(list) do
+  defp not_uniq?(list) do
     list |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
   end
 
