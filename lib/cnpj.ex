@@ -29,11 +29,15 @@ defmodule Cnpj do
   """
   def valid?(cnpj) do
     list = to_list(cnpj)
-    valid_digits_verifier?(list)
+    valid_size?(list) and valid_digits_verifier?(list)
   end
 
   defp to_list(cpf) do
     cpf |> strip() |> String.split("", trim: true) |> Enum.map(&String.to_integer/1)
+  end
+
+  defp valid_size?(list) do
+    Enum.count(list) == 14
   end
 
   defp valid_digits_verifier?(list) do
