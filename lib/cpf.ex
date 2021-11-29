@@ -2,6 +2,8 @@ defmodule Cpf do
   @moduledoc """
   This module validate, format and generate fake CPF
   """
+  alias CpfCnpjShared, as: Shared
+
   @not_permited ["12345678909", "01234567890", "98765432100"]
 
   @doc """
@@ -14,7 +16,7 @@ defmodule Cpf do
 
   """
   def strip(cpf) do
-    String.replace(cpf, ~r/[\.\/-]/, "")
+    Shared.strip(cpf)
   end
 
   @doc """
@@ -29,20 +31,16 @@ defmodule Cpf do
 
   """
   def valid?(cpf) do
-    list = to_list(cpf)
+    list = Shared.to_list_on_int(cpf)
 
     not_on_not_permited?(list) and
-      not_uniq?(list) and
+      Shared.not_uniq?(list) and
       valid_size?(list) and
       valid_digits_verifier?(list)
   end
 
   defp not_on_not_permited?(list) do
     !Enum.member?(@not_permited, Enum.join(list))
-  end
-
-  defp not_uniq?(list) do
-    list |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
   end
 
   defp valid_size?(list) do
@@ -56,10 +54,6 @@ defmodule Cpf do
     second_verifier = (without_verifier ++ [first_verifier]) |> gen_verifier()
 
     cpf_digits == [first_verifier, second_verifier]
-  end
-
-  defp to_list(cpf) do
-    cpf |> strip() |> String.split("", trim: true) |> Enum.map(&String.to_integer/1)
   end
 
   defp gen_verifier(numbers) do
