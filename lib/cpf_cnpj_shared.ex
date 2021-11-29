@@ -12,6 +12,6 @@ defmodule CpfCnpjShared do
   end
 
   def not_uniq?(list) do
-    list |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
+    list |> Enum.take(12) |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
   end
 end
