@@ -15,4 +15,9 @@ defmodule CnpjTest do
     refute Cnpj.valid?("223.276.500/0001-30")
     refute Cnpj.valid?("68894480000")
   end
+
+  test "invalid if all equals" do
+    # refute Cnpj.valid?("11.111.111-1111/80")
+    refute Cnpj.valid?("5555555555555")
+  end
 end

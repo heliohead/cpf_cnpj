@@ -3,6 +3,8 @@ defmodule Cnpj do
   This module validate, format and generate fake CNPJ
   """
 
+  alias CpfCnpjShared, as: Shared
+
   @doc """
   Keep only numbers from string
 
@@ -13,7 +15,7 @@ defmodule Cnpj do
 
   """
   def strip(cnpj) do
-    String.replace(cnpj, ~r/[\.\/-]/, "")
+    Shared.strip(cnpj)
   end
 
   @doc """
@@ -28,12 +30,11 @@ defmodule Cnpj do
 
   """
   def valid?(cnpj) do
-    list = to_list(cnpj)
-    valid_size?(list) and valid_digits_verifier?(list)
-  end
+    list = Shared.to_list_on_int(cnpj)
 
-  defp to_list(cpf) do
-    cpf |> strip() |> String.split("", trim: true) |> Enum.map(&String.to_integer/1)
+    valid_size?(list) and
+      Shared.not_uniq?(list) and
+      valid_digits_verifier?(list)
   end
 
   defp valid_size?(list) do
