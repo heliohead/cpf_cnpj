@@ -60,6 +60,6 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/cpf_cnpj>.
 
 ## Acknowledgment
-Inspired by  Nando's [cpf_cnpj](https://github.com/fnando/cpf_cnpj).
+It's a port of Nando's [cpf_cnpj](https://github.com/fnando/cpf_cnpj) ruby gem to elixir.
 
 # [LICENSE](https://github.com/heliohead/cpf_cnpj/LICENSE)
