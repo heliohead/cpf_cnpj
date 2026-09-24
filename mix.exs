@@ -1,12 +1,16 @@
 defmodule CpfCnpj.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/heliohead/cpf_cnpj"
+
   def project do
     [
       app: :cpf_cnpj,
-      version: "0.1.0",
-      elixir: System.version(),
+      version: "0.2.0",
+      elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
+      source_url: @source_url,
+      package: package(),
       deps: deps()
     ]
   end
@@ -15,6 +19,16 @@ defmodule CpfCnpj.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp package do
+    [
+      description:
+        "Validate, format and generate fake CPF/CNPJ, with support for the alphanumeric CNPJ format.",
+      files: ~w(lib mix.exs README.md LICENSE),
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 
