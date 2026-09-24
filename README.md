@@ -62,4 +62,5 @@ be found at <https://hexdocs.pm/cpf_cnpj>.
 ## Acknowledgment
 It's a port of Nando's [cpf_cnpj](https://github.com/fnando/cpf_cnpj) ruby gem to elixir.
 
-# [LICENSE](https://github.com/heliohead/cpf_cnpj/LICENSE)
+## License
+Released under the [MIT License](https://github.com/heliohead/cpf_cnpj/LICENSE).
