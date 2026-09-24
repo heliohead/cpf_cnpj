@@ -3,15 +3,28 @@ defmodule CpfCnpjShared do
   This module share common functions
   """
 
-  def to_list_on_int(str) do
-    str |> strip() |> String.split("", trim: true) |> Enum.map(&String.to_integer/1)
+  def char_values(str) do
+    str
+    |> String.to_charlist()
+    |> Enum.map(fn char -> char - 48 end)
   end
 
-  def strip(cnpj) do
-    String.replace(cnpj, ~r/[\.\/-]/, "")
+  def strip(str) do
+    str
+    |> to_string()
+    |> String.replace(~r/[\.\/-]/, "")
+    |> String.upcase()
+  end
+
+  def mod11_digit(sum) do
+    mod = rem(sum, 11)
+
+    if mod < 2, do: 0, else: 11 - mod
   end
 
   def not_uniq?(list) do
-    list |> Enum.take(12) |> Enum.uniq() |> Enum.count() |> Kernel.>(2)
+    uniq_count = list |> Enum.take(12) |> Enum.uniq() |> Enum.count()
+
+    uniq_count > 2
   end
 end
