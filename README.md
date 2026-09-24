@@ -11,8 +11,7 @@ It supports the alphanumeric CNPJ format introduced by Receita Federal in July
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cpf_cnpj` to your list of dependencies in `mix.exs`:
+Add `cpf_cnpj` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -55,9 +54,7 @@ By default, only the mask characters `.` `/` `-` are stripped before
 validating. Pass `strict: true` to additionally require the input to be in
 `XX.XXX.XXX/XXXX-XX` (or bare) form.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/cpf_cnpj>.
+Documentation is available at <https://hexdocs.pm/cpf_cnpj>.
 
 ## Acknowledgment
 It's a port of Nando's [cpf_cnpj](https://github.com/fnando/cpf_cnpj) ruby gem to elixir.
